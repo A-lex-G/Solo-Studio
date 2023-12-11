@@ -1,5 +1,45 @@
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
+import transition from '../../utils/transition';
+import {
+  ContentColor,
+  PinkTextColor
+} from '../../utils/Colors';
+
+export const StyledHeader = styled.header`
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 20px 0;
+  border: 2px solid ${ContentColor};
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  box-shadow:
+    0 0 5px ${ContentColor},
+    0 0 10px ${ContentColor},
+    0 0 20px ${ContentColor},
+    0 0 40px ${ContentColor},
+    0 0 80px ${ContentColor};
+
+  transition:
+    border-color ${transition},
+    box-shadow ${transition};
+
+  &:hover,
+  &:focus {
+    border-color: ${PinkTextColor};
+    box-shadow:
+      0 0 5px ${PinkTextColor},
+      0 0 10px ${PinkTextColor},
+      0 0 20px ${PinkTextColor},
+      0 0 40px ${PinkTextColor},
+      0 0 80px ${PinkTextColor};
+    }
+  }
+`;
 
 export const HeaderContainer = styled.div`
   padding: 10px;
@@ -11,41 +51,27 @@ export const Navigation = styled.nav`
   align-items: center;
 `;
 
-export const StyledLink = styled(Link)`
-  padding: 8px 16px;
-  color: #ffffff; /* White text color */
-  text-shadow:
-    0 0 5px #00baff,
-    0 0 10px #00baff,
-    0 0 20px #00baff,
-    0 0 40px #00baff,
-    0 0 80px #00baff;
+export const NavLinkWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  column-gap: 40px;
+`;
+
+export const StyledNavLink = styled(NavLink)`
+  color: ${ContentColor};
+
   transition:
-    color 0.3s,
-    text-shadow 0.3s;
+    color ${transition},
+    text-shadow ${transition};
 
   &:hover,
   &:focus {
-    color: #00baff; /* Blue text color on hover/focus */
+    color: ${PinkTextColor};
     text-shadow:
-      0 0 5px #00baff,
-      0 0 10px #00baff,
-      0 0 20px #00baff,
-      0 0 40px #00baff,
-      0 0 80px #00baff;
+      0 0 5px ${PinkTextColor},
+      0 0 10px ${PinkTextColor},
+      0 0 20px ${PinkTextColor},
+      0 0 40px ${PinkTextColor},
+      0 0 80px ${PinkTextColor};
   }
-`;
-
-export const IconWrapper = styled.svg`
-  width: ${(props) => props.size || '12px'};
-  height: ${(props) => props.size || '12px'};
-  fill: ${(props) => props.color || '#ffffff'};
-  display: inline-block;
-  margin-right: 5px;
-  box-shadow:
-    0 0 5px #00baff,
-    0 0 10px #00baff,
-    0 0 20px #00baff,
-    0 0 40px #00baff,
-    0 0 80px #00baff;
-`;
+`
